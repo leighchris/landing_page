@@ -1,0 +1,148 @@
+{% load static %}
+
+<!doctype html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+  
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|PT+Sans" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </head>
+<body>  
+    
+<div class ="site-container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a href="#" class="navbar-left logo"><img class="logo" src="/static/css/brand.jpg"></a>
+   <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button> -->
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+       <!--   <a class="nav-item nav-link active" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="#">About</a> -->
+        </div>
+      </div>
+</nav>
+       {% if messages %}
+       <div class ="row">
+       {% for message in messages %}
+           <div data-alert class="alert-box {{ message.tags }} radius"></div>
+            {{ message }}
+           <a href="#" class ="close">&times;</a>
+       </div>
+       {% endfor %}
+       {% endif %}
+       
+    <div class="row pt-5" id ="first_section_row">
+        <div class="container" id="site_container">
+             <!-- <div class = "col-md-8"> -->
+            <div class="container" id="vision">
+            <div class ="container" id="vision_text">
+                <h1 class="value_prop">Solve your research problems faster</h1>
+                <p class="vision_blurb">Connect with a researcher who has the expertise you need.<br>Sign up for Scipertise and do better research, faster.</p>
+                <p class="advice_blurb">Get insights on: <br> experimental models  |  software  |  lab techniques  |  equipment  |   data analysis</p>
+            </div>
+            
+         <!--   </div> -->
+            
+        </div>
+      <!--  <div class= "col-md-4" id="form"> -->
+           <div class="container" id="form">
+            <form class="home_form" action="" method="POST">
+                <h4 class="form_title">Request beta access</h4>
+                <p class="form_text" label="First Name">First Name:</p>
+                 {{ form.first_name }}
+                <p class="form_text" label="Last Name">Last Name:</p>
+                 {{ form.last_name }}
+                <p class="form_text" label="Email">Email:</p>
+                 {{ form.email  }}
+                {% csrf_token %}
+                 <br>
+                <input type="submit" class="button" value="Sign Up">
+               </form>
+            
+            </div>
+        
+        </div>
+      
+           <!-- </div>    -->  
+        
+        </div> 
+
+       
+            {% block content %}{% endblock %}
+       
+       
+
+         </div>
+                
+            </body>
+    <script>
+    $('#subscribe').submit(function(e){
+      e.preventDefault();
+      var email = $("#email").val();
+      if(email){
+        var csrfmiddlewaretoken = csrftoken;
+        var email_data = {"email": email, 
+                          "csrfmiddlewaretoken" : csrfmiddlewaretoken};
+        $.ajax({
+          type : 'POST',
+          url :  '/subscribe/',
+          data : email_data,
+          success : function(response){
+            $('#email_id').val(''); 
+            if(response.status == "404"){
+              alert("This Email is already been subscribed!");
+            }
+            else{
+              alert("Thank you for Subscribing! Please Check your Email to Confirm the Subscription");
+            }
+          },
+          error: function(response) {
+            alert("Sorry Something went Wrong");
+            $('#email').val(''); 
+          }
+        });
+        return false;
+      }
+      else{
+        alert("Please provide correct email!");
+      }
+  });
+ 
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+
+function csrfSafeMethod(method) {
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+})
+    
+    </script>
+</html>

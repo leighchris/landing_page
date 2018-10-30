@@ -1,0 +1,157 @@
+
+body {
+    height: 100%;
+    background-image: url(scipertise_background_dark.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+div#site_container.container {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+div#vision.container {
+    
+   
+    display: flex;
+    flex-direction: row;
+    width: 240%;
+    padding-bottom: 40px;
+    
+}
+
+div#first_section_row.row.pt-5 {
+    
+    height:100%;
+    padding-bottom: 50px;
+}
+
+img.logo {
+ 
+    height:58px;
+    padding: 10px 12px 14px 50px;
+    max-width:100%;
+}
+
+
+h1.value_prop {
+    padding-top: 30px;
+    color: white;
+    font-size: 34pt;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    clear: right;
+}
+
+p.vision_blurb {
+    padding: 20px 0px 20px 0px;
+    color: white;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 14pt;
+}
+
+p.advice_blurb {
+    color:white;
+    font-size: 14pt;
+    font-family: 'PT Sans', sans-serif;
+}
+
+form.home_form {
+   
+    display: block;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: white;
+}
+
+h4.form_title {
+    font-family: 'Montserrat', sans-serif;
+    
+}
+
+p.form_text {
+    padding-top: 20px;
+    font-family: 'PT Sans', sans-serif;
+    margin-bottom: 0.5rem;
+}
+
+input#id_first_name {
+    width: 280px;
+    padding-top: 5px;
+}
+
+input#id_last_name {
+    width: 280px;
+    padding-top: 10px;
+}
+
+input#id_email {
+    width: 280px;
+    padding-top: 10px;
+    margin-bottom: 20px;
+}
+
+input.button {
+    width: 280px;
+    background-color: #363095;
+    color: white;
+    padding: 10px;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 200;
+}
+
+input.button:hover {
+    width: 280px;
+    background-color: #13acee;
+    color: white;
+    padding: 10px;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 200;
+}
+
+div#form.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+   
+}
+
+@media screen and (max-width: 1000px) {
+ div#site_container.container {
+    flex-direction: column;
+  }
+
+
+@media screen and (max-width: 1000px) {
+ div#vision.container {
+     text-align: center;
+     width: 100%;
+  }
+    
+    
+@media screen and (max-width: 600px) {
+ div#vision.container {
+     text-align: center;
+  }
+    
+@media screen and (max-width: 1000px) {
+ p.vision_blurb {
+     font-size: 11pt;
+  }
+    
+@media screen and (max-width: 1000px) {
+ p.advice_blurb {
+     font-size: 11pt;
+  }
+    
+@media screen and (max-width: 1000px) {
+ h1.value_prop {
+     font-size: 28pt;
+  }
+    
+    
+
+
+
