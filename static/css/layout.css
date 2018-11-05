@@ -1,3 +1,5 @@
+/** Main layout and home page styles **/
+
 
 body {
     height: 100%;
@@ -64,6 +66,7 @@ form.home_form {
     margin: 0 auto;
     padding: 30px;
     background-color: white;
+    border-radius: 10px;
 }
 
 h4.form_title {
@@ -118,6 +121,24 @@ div#form.container {
    
 }
 
+/** Sign-Up Page Styles **/
+
+
+div#sign_up_form.container{
+        
+        padding: 30px;
+    }
+    
+form.signup_form {
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    
+}
+
+/** Media Queries **/
+
 @media screen and (max-width: 1000px) {
  div#site_container.container {
     flex-direction: column;
@@ -151,6 +172,7 @@ div#form.container {
      font-size: 28pt;
   }
     
+
     
 
 

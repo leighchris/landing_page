@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+
+ <title>{% block title %}Sign Up{% endblock %}</title>
+ 
+
+
+ 
+ 
+    
+    {% block content %}
+
+
+ <div class="container" id="sign_up_form">
+            <form class="signup_form" action="" method="POST">
+                <h4 class="form_title">Sign Up for an Account</h4>
+                 {{ form.as_p }}
+                 {{ profile_form.as_p }}
+                {% csrf_token %}
+                <input type="submit" value="Create an Account" name="submit" alt="Register" />
+               </form>
+            </div>
+
+
+
+    {% endblock %}

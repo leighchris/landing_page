@@ -24,7 +24,9 @@ from . import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.homeform_view, name='home'),
-    url('r^$', views.subscribe, name='subscribe'),
+    url(r'^signup/$', views.signup_view, name='signup'),
+    url(r'^profile/$', views.profile_view, name='profile'),
+    url(r'^profile/edit/$', views.edit_profile, name ='edit_profile')
 ]
 
 urlpatterns += staticfiles_urlpatterns()
