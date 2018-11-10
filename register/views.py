@@ -57,30 +57,7 @@ def homeform_view(request):
         return HttpResponseRedirect(reverse('home'))
     return render(request, 'home.html', {'form': form})
 
-def signup_view(request):
-    form = SignupForm()
-    if request.method =='POST':
-        form= SignupForm(request.POST or None)
-        if form.is_valid():
-            form.save()
-        return HttpResponseRedirect(reverse('signup'))
-    return render(request, 'signup.html', {'form': form})
 
-
-def profile_view(request):
-    args = {'user': request.user}
-    return render(request, 'profile.html', args)
-
-def edit_profile(request):
-    form = EditProfileForm()
-    if request.method == 'POST':
-        form = EditProfileForm(request.POST, instance =request.user)
-        if form.is_valid():
-            form.save() 
-        return HttpResponseRedirect(reverse('profile'))
-    else:
-        form = EditProfileForm(instance = request.user)
-        return render(request, 'edit_profile.html', {'form': form})
 
 
 
